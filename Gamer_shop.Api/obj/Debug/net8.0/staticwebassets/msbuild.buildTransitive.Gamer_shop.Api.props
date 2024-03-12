@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/Gamer_shop.Api.props" />
+</Project>
