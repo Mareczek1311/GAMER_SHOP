@@ -3,6 +3,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
+import Link from 'next/link'
 
 export default function Home() {
   
@@ -15,8 +16,8 @@ export default function Home() {
       console.log(data);
       setData(data);
     }
-
-    fetchData();
+    
+    fetchData().catch((e) => console.log(e));
   
   }, [])
 
@@ -29,11 +30,20 @@ export default function Home() {
       <div className={styles.grid}>
         {data && data.map((game : any) => (
           <div key={game.id} className={styles.card}>
-            <h3>{game.name}</h3>
-            <p>{game.description}</p>
+              
+              <Link href={`/game/${game.id}`}>
+                  <h3>{game.name}</h3>
+              </Link>
+
           </div>
         ))}
 
+        </div>
+
+        <div>
+          <Link href="/add_game">
+            Add Game
+          </Link>
         </div>
 
     </div>
